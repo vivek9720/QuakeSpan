@@ -1,0 +1,54 @@
+[package]
+name = "quakespan-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+quakespan = { path = ".." }
+libfuzzer-sys = { path = "libfuzzer-sys" }
+
+[workspace]
+
+[profile.release]
+debug = 1
+overflow-checks = true
+panic = "abort"
+
+[[bin]]
+name = "archive_fuzzer"
+path = "fuzz_targets/archive_fuzzer.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "stream_fuzzer"
+path = "fuzz_targets/stream_fuzzer.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "rules_fuzzer"
+path = "fuzz_targets/rules_fuzzer.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "span_fuzzer"
+path = "fuzz_targets/span_fuzzer.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "eventlog_fuzzer"
+path = "fuzz_targets/eventlog_fuzzer.rs"
+test = false
+doc = false
+bench = false
